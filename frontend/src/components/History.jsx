@@ -72,6 +72,29 @@ function History({ token, onSelectDataset }) {
         }
     }
 
+    const handleDelete = async (e, datasetId, filename) => {
+        e.stopPropagation()
+
+        if (!window.confirm(`Are you sure you want to delete "${filename}"? This action cannot be undone.`)) {
+            return
+        }
+
+        try {
+            const headers = {}
+            if (token) {
+                headers['Authorization'] = `Token ${token}`
+            }
+
+            await axios.delete(`${API_BASE}/api/dataset/${datasetId}/`, { headers })
+
+            // Refresh the history list
+            fetchHistory()
+        } catch (err) {
+            setError('Failed to delete dataset')
+            console.error('Delete failed:', err)
+        }
+    }
+
     const formatDate = (dateString) => {
         const date = new Date(dateString)
         return date.toLocaleDateString('en-US', {
@@ -153,6 +176,17 @@ function History({ token, onSelectDataset }) {
                                     style={{ padding: '0.5rem 1rem' }}
                                 >
                                     📄 PDF
+                                </button>
+                                <button
+                                    className="btn"
+                                    onClick={(e) => handleDelete(e, dataset.id, dataset.filename)}
+                                    style={{
+                                        padding: '0.5rem 1rem',
+                                        background: '#ef4444',
+                                        marginLeft: '0.5rem'
+                                    }}
+                                >
+                                    🗑️ Delete
                                 </button>
                             </div>
                         </div>

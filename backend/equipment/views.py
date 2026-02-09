@@ -157,6 +157,30 @@ class HistoryView(APIView):
         return Response(serializer.data)
 
 
+class DatasetDeleteView(APIView):
+    """
+    Delete a specific dataset and its associated records.
+    
+    DELETE /api/dataset/<id>/
+    """
+    permission_classes = [AllowAny]
+    
+    def delete(self, request, pk):
+        try:
+            dataset = Dataset.objects.get(pk=pk)
+            filename = dataset.filename
+            dataset.delete()
+            return Response(
+                {'message': f'Dataset "{filename}" deleted successfully'},
+                status=status.HTTP_200_OK
+            )
+        except Dataset.DoesNotExist:
+            return Response(
+                {'error': 'Dataset not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+
 class PDFReportView(APIView):
     """
     Generate and download PDF report for a dataset.

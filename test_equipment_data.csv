@@ -1,0 +1,21 @@
+Equipment Name,Type,Flowrate,Pressure,Temperature
+P-201,Centrifugal Pump,55.2,15.5,42
+P-202,Centrifugal Pump,48.7,14.2,38
+T-301,Distillation Column,180.5,3.2,125
+T-302,Distillation Column,165.0,2.8,118
+R-401,CSTR Reactor,22.5,55.0,245
+R-402,Batch Reactor,18.3,48.5,220
+HE-501,Plate Exchanger,92.0,8.5,95
+HE-502,Shell and Tube Exchanger,78.5,7.2,88
+V-601,Pressure Vessel,0.0,25.0,85
+V-602,Storage Tank,0.0,1.5,28
+K-701,Centrifugal Compressor,1450.0,35.0,175
+K-702,Reciprocating Compressor,980.0,28.5,155
+F-801,Bag Filter,35.2,4.5,45
+F-802,Sand Filter,28.8,3.8,35
+E-901,Kettle Reboiler,72.0,3.5,155
+E-902,Thermosiphon Reboiler,68.5,3.2,148
+D-101,Horizontal Separator,88.0,6.5,95
+D-102,Vertical Separator,75.5,5.8,82
+MX-201,Static Mixer,125.0,12.5,55
+AG-301,Agitator,45.0,2.0,65
